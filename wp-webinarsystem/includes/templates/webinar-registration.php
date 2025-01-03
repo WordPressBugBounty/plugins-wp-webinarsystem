@@ -51,12 +51,12 @@ $reg_formImgVidType = get_post_meta($post->ID, '_wswebinar_regp_vidurl_type', tr
 $reg_formImgVidUrl = get_post_meta($post->ID, '_wswebinar_regp_vidurl', true);
 $reg_formImgDefUrl = plugins_url('../images/womancaffeelaptopkl.jpg', __FILE__);
 
-$the_regp_tabonetext = !empty($regp_tabone_text) ? $regp_tabone_text : __('Register', '_wswebinar');
-$the_regp_tabtwotext = !empty($regp_tabtwo_text) ? $regp_tabtwo_text : __('Login', '_wswebinar');
+$the_regp_tabonetext = !empty($regp_tabone_text) ? $regp_tabone_text : __('Register', 'wp-webinarsystem');
+$the_regp_tabtwotext = !empty($regp_tabtwo_text) ? $regp_tabtwo_text : __('Login', 'wp-webinarsystem');
 
-$the_reg_form_title = !empty($reg_form_title) ? $reg_form_title : __('Free Sign Up:', '_wswebinar');
+$the_reg_form_title = !empty($reg_form_title) ? $reg_form_title : __('Free Sign Up:', 'wp-webinarsystem');
 $the_reg_form_text = !empty($reg_form_text) ? $reg_form_text : '';
-$the_regp_ctatext = !empty($regp_ctatext) ? $regp_ctatext : __('Sign Up', '_wswebinar');
+$the_regp_ctatext = !empty($regp_ctatext) ? $regp_ctatext : __('Sign Up', 'wp-webinarsystem');
 $the_regp_regformfont_clr = !empty($regp_regformfont_clr) ? 'color:' . $regp_regformfont_clr . ' !important;' : '';
 $the_regp_regformbckg_clr = !empty($regp_regformbckg_clr) ? 'background-color:' . $regp_regformbckg_clr . ' !important;' : '';
 $the_regp_regformborder_clr = !empty($regp_regformborder_clr) ? 'border-color:' . $regp_regformborder_clr . ' !important;' : '';
@@ -68,7 +68,7 @@ $the_login_form_text = !empty($reg_login_form_text) ? $reg_login_form_text : '';
 $the_login_btnbg_color = !empty($reg_loginformbtn_clr) ? 'background-color:' . $reg_loginformbtn_clr . ';' : '';
 $the_login_btnbrdr_color = !empty($reg_loginformbtnborder_clr) ? 'border-color:' . $reg_loginformbtnborder_clr . ';' : '';
 $the_login_btn_color = !empty($reg_loginformbtntxt_clr) ? 'color:' . $reg_loginformbtntxt_clr . ';' : '';
-$the_login_btn_text = !empty($reg_loginctatext) ? $reg_loginctatext : __('Login', '_wswebinar');
+$the_login_btn_text = !empty($reg_loginctatext) ? $reg_loginctatext : __('Login', 'wp-webinarsystem');
 
 $the_regp_regtitle_clr = !empty($regp_regtitle_clr) ? $regp_regtitle_clr : '#C7C7C7';
 $the_regp_regmeta_clr = !empty($regp_regmeta_clr) ? $regp_regmeta_clr : '#C7C7C7';
@@ -89,7 +89,7 @@ $ticketp_formborder_clr = get_post_meta($post->ID, '_wswebinar_ticketp_border_cl
 $ticketp_link_text = WebinarSysteemHelperFunctions::get_post_meta_with_default(
     $post->ID,
     '_wswebinar_ticketp_buy_link_text',
-    __('Buy a webinar ticket', '_wswebinar'));
+    __('Buy a webinar ticket', 'wp-webinarsystem'));
 
 $the_ticketp_font_clr = 'color:' . (!empty($ticketp_font_clr) ? $ticketp_font_clr . ' !important;' : '#FFF;');
 $the_ticketp_bckg_clr = !empty($ticketp_formbckg_clr) ? 'background-color:' . $ticketp_formbckg_clr . ' !important;' : '';
@@ -207,7 +207,7 @@ if (is_user_logged_in()) {
                 <div style='row'>
                     <div class="col-xs-6 col-xs-offset-2">
                         <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">
-                          <img src="<?php echo esc_url(plugins_url('./images/iecheck.jpg', __FILE__)); ?>" border="0" height="42" width="820" alt="" />
+                          <img src="<?php echo esc_url(plugins_url('./images/iecheck.jpg', __FILE__)); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" border="0" height="42" width="820" alt="" />
                         </a>
                     </div>
                 </div>
@@ -220,13 +220,13 @@ if (is_user_logged_in()) {
                     </div> 
                     <h4 class="text-center" id="reg-meta" style="color:<?php echo esc_attr($the_regp_regmeta_clr) ?> !important"><?php
 			if (!WebinarSysteem::is_recurring_webinar($post->ID)) {
-			    echo (!empty($wb_date) ? esc_html__('Date', '_wswebinar') . ': ' . esc_attr($wb_date) . '  ' : null);
-			    echo (!empty($wb_time) ? esc_html__('Time', '_wswebinar') . ': ' . esc_attr($wb_time) . '  ' : null);
+			    echo (!empty($wb_date) ? esc_html__('Date', 'wp-webinarsystem') . ': ' . esc_attr($wb_date) . '  ' : null);
+			    echo (!empty($wb_time) ? esc_html__('Time', 'wp-webinarsystem') . ': ' . esc_attr($wb_time) . '  ' : null);
 			    echo esc_attr($timeZone);
 			}
 			echo WebinarSysteemHosts::isMultipleHosts($post->ID) ? '<br/>' : '';
 			//echo (!empty($wb_host) ? esc_html__(_n('Host', 'Hosts', $wb_hostcount, '_wswebinar')) . ': ' . esc_html($wb_host) : null);
-			$host_text = _n('Host', 'Hosts', $wb_hostcount, '_wswebinar'); 
+			$host_text = _n('Host', 'Hosts', $wb_hostcount, 'wp-webinarsystem'); 
 			echo (!empty($wb_host) ? esc_html($host_text) : null);
 			?>
                     </h4>
@@ -246,7 +246,7 @@ if (is_user_logged_in()) {
 				    ?>
 	    			<iframe src="https://player.vimeo.com/video/<?php echo esc_url($reg_formImgVidUrl) . '?autoplay=' . esc_attr($autoplay) ?>" width="100%" height="563" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 				<?php elseif ($reg_formImgVidType == 'image'): ?>
-	    			<img src="<?php echo esc_url($reg_formImgVidUrl); ?>" width="100%" height="315">
+	    			<img src="<?php echo esc_url($reg_formImgVidUrl); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" width="100%" height="315">
 				    <?php
 				elseif ($reg_formImgVidType == 'file'):
 
@@ -254,7 +254,7 @@ if (is_user_logged_in()) {
 
 				endif;
 			    else:
-				?> <img src="<?php echo esc_url($reg_formImgDefUrl); ?>" width="100%" height="315" />
+				?> <img src="<?php echo esc_url($reg_formImgDefUrl); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" width="100%" height="315" />
 			    <?php endif; ?>
 
     		    </div>
@@ -346,19 +346,19 @@ if (is_user_logged_in()) {
 									class="form-control forminputs"
 									name="inputname"
 									required
-									placeholder="<?php esc_html_e('Your Name', '_wswebinar') ?>"
+									placeholder="<?php esc_html_e('Your Name', 'wp-webinarsystem') ?>"
 									type="text"
 									value="<?php  echo esc_attr($default_name); ?>"
 								/>
 
 								<span style="display: none;" id="infomail_error" class="error">
-									<?php esc_html_e("Unfortunately, you can't use a general info@.. address. Please use a personal e-mail address", '_wswebinar') ?>
+									<?php esc_html_e("Unfortunately, you can't use a general info@.. address. Please use a personal e-mail address", 'wp-webinarsystem') ?>
 								</span>
 
 								<input
 									class="form-control forminputs"
 									name="inputemail"
-									placeholder="<?php esc_html_e('Your Email Address', '_wswebinar') ?>"
+									placeholder="<?php esc_html_e('Your Email Address', 'wp-webinarsystem') ?>"
 									required
 									type="email"
 									value="<?php echo esc_attr($default_email); ?>"
@@ -432,7 +432,7 @@ if (is_user_logged_in()) {
                                 if (!empty($reg_form_footer)) {
                                     echo esc_html($reg_form_footer);
                                 } else {
-                                    esc_html_e('Of course we will handle your data safely.', '_wswebinar');
+                                    esc_html_e('Of course we will handle your data safely.', 'wp-webinarsystem');
                                 }
                                 ?>
                             </p>
@@ -459,13 +459,13 @@ if (is_user_logged_in()) {
 					<div>
 					    <form method="POST" name="wpws_webinar_login">
 							<span class="error login_error">
-								<?php esc_html_e('This email is not registered.', '_wswebinar') ?>
+								<?php esc_html_e('This email is not registered.', 'wp-webinarsystem') ?>
 							</span>
 							<input type="hidden" name="webinar_id" value="<?php echo intval($post->ID) ?>">
 							<input
 								class="form-control forminputs"
 								name="inputemail"
-								placeholder="<?php esc_html_e('Your Email Address', '_wswebinar') ?>"
+								placeholder="<?php esc_html_e('Your Email Address', 'wp-webinarsystem') ?>"
 								type="email"
 								value="<?php echo esc_attr($default_email); ?>"
 							/>
@@ -481,7 +481,7 @@ if (is_user_logged_in()) {
     			</div>
 			<?php } else { ?> 
     			<div class="text-center round-border-full signup" style="<?php echo esc_attr($the_regp_regformbckg_clr) . esc_attr($the_regp_regformfont_clr) . esc_attr($the_regp_regformborder_clr); ?>">
-    			    <h1><?php esc_html_e('Registration is closed for this webinar.', '_wswebinar') ?></h1>
+    			    <h1><?php esc_html_e('Registration is closed for this webinar.', 'wp-webinarsystem') ?></h1>
     			</div>
 			<?php } ?>
                     </div>

@@ -12,6 +12,7 @@ class WebinarSysteem
     public $plugin_version;
 
     public static $lang_slug;
+    public static $lang_slug_old;
     private static $actions_have_been_added = false;
 
     public static $WP_DATE_FORMAT = 1;
@@ -488,19 +489,32 @@ class WebinarSysteem
 
         // get the locale
         $locale = self::get_locale();
-        $mofile = sprintf('%1$s-%2$s.mo', '_wswebinar', $locale);
+        $mofile = sprintf('%1$s-%2$s.mo', 'wp-webinarsystem', $locale);
+        $mofile_old = sprintf('%1$s-%2$s.mo', '_wswebinar', $locale);
 
         // check in lang/plugins/wpwebinarsystem folder
         $mofile_global1 = WP_LANG_DIR.'/plugins/wpwebinarsystem/'.$mofile;
+        $mofile_global1_old = WP_LANG_DIR.'/plugins/wpwebinarsystem/'.$mofile_old;
+
         if (file_exists($mofile_global1)) {
             load_textdomain(self::$lang_slug, $mofile_global1);
+            return;
+        }
+        else if (file_exists($mofile_global1_old)) {
+            load_textdomain(self::$lang_slug_old, $mofile_global1_old);
             return;
         }
 
         // check in root lang/plugins folder
         $mofile_global2 = WP_LANG_DIR.'/plugins/'.$mofile;
+        $mofile_global2_old = WP_LANG_DIR.'/plugins/'.$mofile_old;
+
         if (file_exists($mofile_global2)) {
             load_textdomain(self::$lang_slug, $mofile_global2);
+            return;
+        }
+        else if (file_exists($mofile_global2_old)) {
+            load_textdomain(self::$lang_slug_old, $mofile_global2_old);
             return;
         }
 
@@ -637,7 +651,7 @@ class WebinarSysteem
             wp_enqueue_style('webinar-admin-icons', plugin_dir_url($this->_FILE_) . 'includes/css/icons.css');
         };
 
-        // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+        // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion, PluginCheck.CodeAnalysis.EnqueuedResourceOffloading.OffloadedContent
         wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
         // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
         wp_enqueue_style('bootstrap-switch-style', plugin_dir_url($this->_FILE_) . 'includes/css/bootstrap-switch.min.css');
@@ -646,8 +660,8 @@ class WebinarSysteem
         wp_enqueue_media();
 
         wp_localize_script('webinar-systeem', 'wpwsL10n', array(
-            'automated' => __('Automated', '_wswebinar'),
-            'countdown' => __('Countdown', '_wswebinar'),
+            'automated' => __('Automated', 'wp-webinarsystem'),
+            'countdown' => __('Countdown', 'wp-webinarsystem'),
         ));
 
         if (current_user_can('administrator') &&
@@ -728,7 +742,7 @@ class WebinarSysteem
         wp_enqueue_style('wpws-webinar-admin-fonts', plugin_dir_url($this->_FILE_) . 'includes/css/fonts.css');
         // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
         wp_enqueue_style('wpws-webinar-admin-icons', plugin_dir_url($this->_FILE_) . 'includes/css/icons.css');
-        // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+        // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion, PluginCheck.CodeAnalysis.EnqueuedResourceOffloading.OffloadedContent
         wp_enqueue_style('wpws-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
         // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
         wp_enqueue_style('wpws-videojs-css', plugin_dir_url($this->_FILE_) . 'includes/libs/videojs/videojs.css');
@@ -837,8 +851,8 @@ class WebinarSysteem
     // Add the WebinarSysteem admin menus.
     public function register_menus() {
         add_menu_page(
-            __('WebinarPress', '_wswebinar'),
-            __('WebinarPress', '_wswebinar'),
+            __('WebinarPress', 'wp-webinarsystem'),
+            __('WebinarPress', 'wp-webinarsystem'),
             '_wswebinar_createwebinars',
             'wswbn-webinars',
             ['WebinarSysteemPages', 'webinar_list'],
@@ -848,8 +862,8 @@ class WebinarSysteem
         if (current_user_can('_wswebinar_createwebinars')) {
             add_submenu_page(
                 "wswbn-webinars",
-                __('Webinars', '_wswebinar'),
-                __('Webinars', '_wswebinar'),
+                __('Webinars', 'wp-webinarsystem'),
+                __('Webinars', 'wp-webinarsystem'),
                 '_wswebinar_createwebinars',
                 'wswbn-webinars',
                 ['WebinarSysteemPages', 'webinar_list']
@@ -857,8 +871,8 @@ class WebinarSysteem
 
             add_submenu_page(
                 "wswbn-webinars",
-                __('New Webinar', '_wswebinar'),
-                __('New Webinar', '_wswebinar'),
+                __('New Webinar', 'wp-webinarsystem'),
+                __('New Webinar', 'wp-webinarsystem'),
                 '_wswebinar_createwebinars',
                 'wswbn-webinar-editor',
                 ['WebinarSysteemPages', 'new_webinar']
@@ -867,8 +881,8 @@ class WebinarSysteem
 
         add_submenu_page(
             "wswbn-webinars",
-            __('Attendees', '_wswebinar'),
-            __('Attendees', '_wswebinar'),
+            __('Attendees', 'wp-webinarsystem'),
+            __('Attendees', 'wp-webinarsystem'),
             '_wswebinar_managesubscribers',
             'wswbn-attendees',
             ['WebinarSysteemPages', 'attendees']
@@ -876,8 +890,8 @@ class WebinarSysteem
 
         add_submenu_page(
             "wswbn-webinars",
-            __('Questions', '_wswebinar'),
-            __('Questions', '_wswebinar'),
+            __('Questions', 'wp-webinarsystem'),
+            __('Questions', 'wp-webinarsystem'),
             '_wswebinar_managesubscribers',
             'wswbn-questions',
             ['WebinarSysteemPages', 'questions']
@@ -885,8 +899,8 @@ class WebinarSysteem
 
         add_submenu_page(
             "wswbn-webinars",
-            __('Settings', '_wswebinar'),
-            __('Settings', '_wswebinar'),
+            __('Settings', 'wp-webinarsystem'),
+            __('Settings', 'wp-webinarsystem'),
             '_wswebinar_managesubscribers',
             'wswbn-settings',
             ['WebinarSysteemPages', 'settings']
@@ -894,8 +908,8 @@ class WebinarSysteem
 
         add_submenu_page(
             "wswbn-webinars",
-            '<strong style="color:#39b143;">' . __('Upgrade to PRO', '_wswebinar').'</strong>',
-            '<strong style="color:#39b143;">' . __('Upgrade to PRO', '_wswebinar').'</strong>',
+            '<strong style="color:#39b143;">' . __('Upgrade to PRO', 'wp-webinarsystem').'</strong>',
+            '<strong style="color:#39b143;">' . __('Upgrade to PRO', 'wp-webinarsystem').'</strong>',
             '_wswebinar_managesubscribers',
             'wswbn-upgrade',
             ['WebinarSysteemPages', 'redirect_to_pro_upgrade']
@@ -927,7 +941,8 @@ class WebinarSysteem
         $this->post_slug = 'wswebinars';
         $this->db_version = '1.0';
 
-        self::$lang_slug = '_wswebinar';
+        self::$lang_slug = 'wp-webinarsystem';
+        self::$lang_slug_old = '_wswebinar';
     }
 
     /*
@@ -944,14 +959,14 @@ class WebinarSysteem
 
         register_post_type($this->post_slug, array(
                 'labels' => array(
-                    'name' => __('Webinars', '_wswebinar'),
-                    'singular_name' => __('Webinar', '_wswebinar'),
-                    'name_admin_bar' => __('Webinar', '_wswebinar'),
-                    'add_new' => __('Add New Webinar', '_wswebinar'),
-                    'add_new_item' => __('Add New Webinar', '_wswebinar'),
-                    'new_item' => __('New Webinar', '_wswebinar'),
-                    'edit_item' => __('Edit Webinar', '_wswebinar'),
-                    'view_item' => __('View Webinar', '_wswebinar'),
+                    'name' => __('Webinars', 'wp-webinarsystem'),
+                    'singular_name' => __('Webinar', 'wp-webinarsystem'),
+                    'name_admin_bar' => __('Webinar', 'wp-webinarsystem'),
+                    'add_new' => __('Add New Webinar', 'wp-webinarsystem'),
+                    'add_new_item' => __('Add New Webinar', 'wp-webinarsystem'),
+                    'new_item' => __('New Webinar', 'wp-webinarsystem'),
+                    'edit_item' => __('Edit Webinar', 'wp-webinarsystem'),
+                    'view_item' => __('View Webinar', 'wp-webinarsystem'),
                 ),
                 'public' => true,
                 'has_archive' => false,
@@ -1478,7 +1493,7 @@ class WebinarSysteem
     {
 
         if (WebinarSysteem::isAutomated($webinar_id)) {
-            return __('Automated', '_wswebinar');
+            return __('Automated', 'wp-webinarsystem');
         }
 
         $stat = $this->checkWebinarStatusForNow($webinar_id);
@@ -1849,13 +1864,13 @@ class WebinarSysteem
     public static function getWeekDayArray($req = '')
     {
         $arr = array(
-            'mon' => __('Monday', '_wswebinar'),
-            'tue' => __('Tuesday', '_wswebinar'),
-            'wed' => __('Wednesday', '_wswebinar'),
-            'thu' => __('Thursday', '_wswebinar'),
-            'fri' => __('Friday', '_wswebinar'),
-            'sat' => __('Saturday', '_wswebinar'),
-            'sun' => __('Sunday', '_wswebinar'),
+            'mon' => __('Monday', 'wp-webinarsystem'),
+            'tue' => __('Tuesday', 'wp-webinarsystem'),
+            'wed' => __('Wednesday', 'wp-webinarsystem'),
+            'thu' => __('Thursday', 'wp-webinarsystem'),
+            'fri' => __('Friday', 'wp-webinarsystem'),
+            'sat' => __('Saturday', 'wp-webinarsystem'),
+            'sun' => __('Sunday', 'wp-webinarsystem'),
         );
         if (empty($req))
             return $arr;
@@ -2068,23 +2083,23 @@ class WebinarSysteem
 
             <ul class="webinar-admin-chatico">
                 <li class="tooltip-livep cusrsor-pointer" data-toggle="tooltip" data-placement="bottom" title=""
-                    data-original-title="<?php esc_html_e('Host and Description Box', '_wswebinar'); ?>">
+                    data-original-title="<?php esc_html_e('Host and Description Box', 'wp-webinarsystem'); ?>">
                     <a style="padding-top: 10px;" href="#" id="show_multi_boxes"
                        class="text-center fa fa-info <?php echo($show_hostb == 'yes' | $show_descb == 'yes' ? 'message-center-newmsg' : ''); ?>"></a>
                 </li>
                 <li class="tooltip-livep cusrsor-pointer" data-toggle="tooltip" data-placement="bottom" title=""
-                    data-original-title="<?php esc_html_e('Question Box', '_wswebinar'); ?>">
+                    data-original-title="<?php esc_html_e('Question Box', 'wp-webinarsystem'); ?>">
                     <a href="#" id="webinar_show_questionbox" data-webinarid="<?php echo esc_attr($webinar_id); ?>"
                        class="icon fa fa-question <?php echo($show_questionbox == 'yes' ? 'message-center-newmsg' : ''); ?>"
                        style="font-size: 18px; padding-top: 7px; margin-top: 0px;"></a>
                 </li>
                 <li class="tooltip-livep cusrsor-pointer" data-toggle="tooltip" data-placement="bottom" title=""
-                    data-original-title="<?php esc_html_e('Message Center', '_wswebinar'); ?>">
+                    data-original-title="<?php esc_html_e('Message Center', 'wp-webinarsystem'); ?>">
                     <a href="#" class="icon webi-class-comments webinar-message-center"></a>
                     <ul id="wswebinar_private_que" style="display: none;"></ul>
                 </li>
                 <li class="tooltip-livep cusrsor-pointer" data-toggle="tooltip" data-placement="bottom" title=""
-                    data-original-title="<?php esc_html_e('Incentive Box', '_wswebinar'); ?>">
+                    data-original-title="<?php esc_html_e('Incentive Box', 'wp-webinarsystem'); ?>">
                     <a href="#" class="glyphicon glyphicon-gift" id="gift_icon" style="padding-top: 9px;top: 0;"></a>
                 </li>
             </ul>
@@ -2262,7 +2277,7 @@ class WebinarSysteem
 
 
             wp_reset_postdata();
-            wp_reset_query();
+            //wp_reset_query();
         }
     }
 
@@ -2274,14 +2289,14 @@ class WebinarSysteem
         if (WebinarSysteemRequirements::is_database_version_out_of_date()) {
             ?>
             <div class="error wswebinar_adnotice">
-                <p><?php esc_html_e('Your MySQL version is out of date, and some functionalities of WebinarPress won\'t work as expected. Please upgrade the MySQL version on your server to a minimum of MySQL 5.5.50 or higher.', '_wswebinar') ?></p>
+                <p><?php esc_html_e('Your MySQL version is out of date, and some functionalities of WebinarPress won\'t work as expected. Please upgrade the MySQL version on your server to a minimum of MySQL 5.5.50 or higher.', 'wp-webinarsystem') ?></p>
             </div>
             <?php
         }
 
         if (WebinarSysteemRequirements::is_php_version_out_of_date()) { ?>
             <div class="error wswebinar_adnotice">
-                <p><?php esc_html_e('Your PHP version is out of date, and some functionalities of WebinarPress won\'t work as expected. Please upgrade the PHP version on your server to a minimum of PHP 5.6 or higher.', '_wswebinar') ?></p>
+                <p><?php esc_html_e('Your PHP version is out of date, and some functionalities of WebinarPress won\'t work as expected. Please upgrade the PHP version on your server to a minimum of PHP 5.6 or higher.', 'wp-webinarsystem') ?></p>
             </div>
             <?php
         }
@@ -2741,20 +2756,20 @@ class WebinarSysteem
         $content .= _x(
                 'Find out how to create a compelling webinar that drives conversions in this ridiculously actionable (and FREE) 5-part email course.',
                 'drip pointer',
-                '_wswebinar') . '<br /><br />';
+                'wp-webinarsystem') . '<br /><br />';
 
         $content .= '<label>';
-        $content .= '<b>' . _x('Email Address:', 'drip pointer', '_wswebinar') . '</b>';
+        $content .= '<b>' . _x('Email Address:', 'drip pointer', 'wp-webinarsystem') . '</b>';
         $content .= '<br />';
         $content .= '<input type="text" id="wpws-drip-pointer-email" value="' . esc_attr( $current_user->user_email ) . '" />';
         $content .= '</label>';
 
         WebinarSysteemUtils::show_admin_pointer('#wpadminbar',
-            _x('Want to know the Secrets of Highly Engaging Webinars?', 'drip pointer', '_wswebinar'),
+            _x('Want to know the Secrets of Highly Engaging Webinars?', 'drip pointer', 'wp-webinarsystem'),
             $content,
-            _x('Yes, please!', 'drip pointer', '_wswebinar'),
+            _x('Yes, please!', 'drip pointer', 'wp-webinarsystem'),
             sprintf($js, 1),
-            _x('No, thanks', 'drip pointer', '_wswebinar'),
+            _x('No, thanks', 'drip pointer', 'wp-webinarsystem'),
             sprintf($js, 0));
     }
 }

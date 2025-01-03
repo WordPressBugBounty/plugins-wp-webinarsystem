@@ -125,24 +125,24 @@ class WPWS_System_Snapshot_Report
         $ms_sites	= is_multisite() ? get_sites() : null;
 
         // yes / no specifics
-        $ismulti	= is_multisite() ? __( 'Yes', 'system-snapshot-report' ) : __( 'No', 'system-snapshot-report' );
-        $safemode	= ini_get( 'safe_mode' ) ? __( 'Yes', 'system-snapshot-report' ) : __( 'No', 'system-snapshot-report' );
-        $wpdebug	= defined( 'WP_DEBUG' ) ? WP_DEBUG ? __( 'Enabled', 'system-snapshot-report' ) : __( 'Disabled', 'system-snapshot-report' ) : __( 'Not Set', 'system-snapshot-report' );
-        $tbprefx	= strlen( $wpdb->prefix ) < 16 ? __( 'Acceptable', 'system-snapshot-report' ) : __( 'Too Long', 'system-snapshot-report' );
-        $fr_page	= $frontpage ? get_the_title( $frontpage ).' (ID# '.$frontpage.')'.'' : __( 'n/a', 'system-snapshot-report' );
-        $fr_post	= $frontpage ? get_the_title( $frontpost ).' (ID# '.$frontpost.')'.'' : __( 'n/a', 'system-snapshot-report' );
-        $errdisp	= ini_get( 'display_errors' ) != false ? __( 'On', 'system-snapshot-report' ) : __( 'Off', 'system-snapshot-report' );
+        $ismulti	= is_multisite() ? __( 'Yes', 'wp-webinarsystem' ) : __( 'No', 'wp-webinarsystem' );
+        $safemode	= ini_get( 'safe_mode' ) ? __( 'Yes', 'wp-webinarsystem' ) : __( 'No', 'wp-webinarsystem' );
+        $wpdebug	= defined( 'WP_DEBUG' ) ? WP_DEBUG ? __( 'Enabled', 'wp-webinarsystem' ) : __( 'Disabled', 'wp-webinarsystem' ) : __( 'Not Set', 'wp-webinarsystem' );
+        $tbprefx	= strlen( $wpdb->prefix ) < 16 ? __( 'Acceptable', 'wp-webinarsystem' ) : __( 'Too Long', 'wp-webinarsystem' );
+        $fr_page	= $frontpage ? get_the_title( $frontpage ).' (ID# '.$frontpage.')'.'' : __( 'n/a', 'wp-webinarsystem' );
+        $fr_post	= $frontpage ? get_the_title( $frontpost ).' (ID# '.$frontpost.')'.'' : __( 'n/a', 'wp-webinarsystem' );
+        $errdisp	= ini_get( 'display_errors' ) != false ? __( 'On', 'wp-webinarsystem' ) : __( 'Off', 'wp-webinarsystem' );
 
-        $jquchk		= wp_script_is( 'jquery', 'registered' ) ? $GLOBALS['wp_scripts']->registered['jquery']->ver : __( 'n/a', 'system-snapshot-report' );
+        $jquchk		= wp_script_is( 'jquery', 'registered' ) ? $GLOBALS['wp_scripts']->registered['jquery']->ver : __( 'n/a', 'wp-webinarsystem' );
 
-        $sessenb	= isset( $_SESSION ) ? __( 'Enabled', 'system-snapshot-report' ) : __( 'Disabled', 'system-snapshot-report' );
-        $usecck		= ini_get( 'session.use_cookies' ) ? __( 'On', 'system-snapshot-report' ) : __( 'Off', 'system-snapshot-report' );
-        $useocck	= ini_get( 'session.use_only_cookies' ) ? __( 'On', 'system-snapshot-report' ) : __( 'Off', 'system-snapshot-report' );
-        $hasfsock	= function_exists( 'fsockopen' ) ? __( 'Your server supports fsockopen.', 'system-snapshot-report' ) : __( 'Your server does not support fsockopen.', 'system-snapshot-report' );
-        $hascurl	= function_exists( 'curl_init' ) ? __( 'Your server supports cURL.', 'system-snapshot-report' ) : __( 'Your server does not support cURL.', 'system-snapshot-report' );
-        $hassoap	= class_exists( 'SoapClient' ) ? __( 'Your server has the SOAP Client enabled.', 'system-snapshot-report' ) : __( 'Your server does not have the SOAP Client enabled.', 'system-snapshot-report' );
-        $hassuho	= extension_loaded( 'suhosin' ) ? __( 'Your server has SUHOSIN installed.', 'system-snapshot-report' ) : __( 'Your server does not have SUHOSIN installed.', 'system-snapshot-report' );
-        $openssl	= extension_loaded('openssl') ? __( 'Your server has OpenSSL installed.', 'system-snapshot-report' ) : __( 'Your server does not have OpenSSL installed.', 'system-snapshot-report' );
+        $sessenb	= isset( $_SESSION ) ? __( 'Enabled', 'wp-webinarsystem' ) : __( 'Disabled', 'wp-webinarsystem' );
+        $usecck		= ini_get( 'session.use_cookies' ) ? __( 'On', 'wp-webinarsystem' ) : __( 'Off', 'wp-webinarsystem' );
+        $useocck	= ini_get( 'session.use_only_cookies' ) ? __( 'On', 'wp-webinarsystem' ) : __( 'Off', 'wp-webinarsystem' );
+        $hasfsock	= function_exists( 'fsockopen' ) ? __( 'Your server supports fsockopen.', 'wp-webinarsystem' ) : __( 'Your server does not support fsockopen.', 'wp-webinarsystem' );
+        $hascurl	= function_exists( 'curl_init' ) ? __( 'Your server supports cURL.', 'wp-webinarsystem' ) : __( 'Your server does not support cURL.', 'wp-webinarsystem' );
+        $hassoap	= class_exists( 'SoapClient' ) ? __( 'Your server has the SOAP Client enabled.', 'wp-webinarsystem' ) : __( 'Your server does not have the SOAP Client enabled.', 'wp-webinarsystem' );
+        $hassuho	= extension_loaded( 'suhosin' ) ? __( 'Your server has SUHOSIN installed.', 'wp-webinarsystem' ) : __( 'Your server does not have SUHOSIN installed.', 'wp-webinarsystem' );
+        $openssl	= extension_loaded('openssl') ? __( 'Your server has OpenSSL installed.', 'wp-webinarsystem' ) : __( 'Your server does not have OpenSSL installed.', 'wp-webinarsystem' );
 
         // start generating report
         $report	= '';

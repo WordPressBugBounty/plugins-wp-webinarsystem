@@ -11,7 +11,7 @@ class WebinarSysteemVideoSources {
     
         if ($iosdevice) {
             ?>
-            <label class="enable-sound"><?php esc_html_e('Enable Sound', '_wswebinar') ?></label>
+            <label class="enable-sound"><?php esc_html_e('Enable Sound', 'wp-webinarsystem') ?></label>
             <input type="hidden" name="store-status" value="yes">
             <input class="rv_listen_enability" type="checkbox" name="wsweb_enable_sound" id="wsweb_enable_sound" data-on-color="webinar-bswitchon" value="no" data-on-text="On" data-off-text="off"> 
             <video id="wpws-video-player-mep"  playsinline autoplay muted>

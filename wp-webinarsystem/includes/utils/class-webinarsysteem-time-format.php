@@ -13,7 +13,7 @@ class WebinarSysteemTimeFormat {
         if ($seconds < 60) {
             return sprintf(
                 // translators: %d will be replaced with the minute.
-                __('%d minute'), 1);
+                __('%d minute', 'wp-webinarsystem'), 1);
         }
 
         if ($minutes < 60) {
@@ -22,7 +22,8 @@ class WebinarSysteemTimeFormat {
                 _n(
                 '%d minute',
                 '%d minutes',
-                $minutes
+                $minutes,
+                'wp-webinarsystem'
             ), $minutes);
         }
 
@@ -31,7 +32,8 @@ class WebinarSysteemTimeFormat {
             _n(
             '%d hour',
             '%d hours',
-            $hours
+            $hours,
+            'wp-webinarsystem'
         ), $hours);
     }
 }

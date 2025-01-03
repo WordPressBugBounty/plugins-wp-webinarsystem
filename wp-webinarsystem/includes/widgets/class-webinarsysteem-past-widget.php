@@ -51,7 +51,7 @@ class WebinarSysteemPastWebinars extends WP_Widget {
                         } else {
                             break;
                         }
-                        wp_reset_query();
+                        wp_reset_postdata();
                     }
                 }
                 if($count == 0){

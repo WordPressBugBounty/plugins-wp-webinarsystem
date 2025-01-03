@@ -15,9 +15,9 @@ class WebinarsysteemDbMigrations {
         echo 'Running db migrations<br>';
 
         // enable debugging
-        ini_set('display_startup_errors', 1);
-        ini_set('display_errors', 1);
-        error_reporting(-1);
+        ini_set('display_startup_errors', 1); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
+        ini_set('display_errors', 1); // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
+        error_reporting(-1); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting
 
         // run the migrations
         $this->run_migrations(true);

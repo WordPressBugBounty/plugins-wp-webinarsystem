@@ -74,7 +74,7 @@ class WebinarSysteemLog {
     public static function dump_object($object) {
         try {
             ob_start();
-            var_dump($object);
+            var_dump($object); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
             return ob_get_clean();
         } catch (Exception $e) {
             return 'var_dump failed: '.$e->getMessage();

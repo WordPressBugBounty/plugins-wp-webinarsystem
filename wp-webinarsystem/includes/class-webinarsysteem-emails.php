@@ -76,7 +76,7 @@ class WebinarSysteemEmails {
     }
 
     public function send_preview($to, $subject, $content, $attendee_name = 'Joe Bloggs') {
-        $posts = query_posts(['post_type' => 'wswebinars']);
+        $posts = query_posts(['post_type' => 'wswebinars']); // phpcs:ignore WordPress.WP.DiscouragedFunctions.query_posts_query_posts
         $post_id = $posts[0]->ID;
 
         $attendee = (object) [
@@ -221,7 +221,7 @@ class WebinarSysteemEmails {
                 'webinar-title' => get_the_title($webinar_id),
                 'webinar-link' => $webinar_link,
                 'webinar-link-button' => function ($args) use ($webinar_link) {
-                    $text = __('Join the webinar', '_wswebinar');
+                    $text = __('Join the webinar', 'wp-webinarsystem');
                     if (isset($args->text)) {
                         $text = $args->text;
                     }
@@ -231,7 +231,7 @@ class WebinarSysteemEmails {
                     );
                 },
                 'confirm-registration-button' => function ($args) use ($confirm_link) {
-                    $text = __('Confirm my registration', '_wswebinar');
+                    $text = __('Confirm my registration', 'wp-webinarsystem');
                     if (isset($args->text)) {
                         $text = $args->text;
                     }
@@ -754,12 +754,12 @@ class WebinarSysteemEmails {
     public function cron_add_5_minutes($schedules) {
         $schedules['every5minutes'] = [
             'interval' => 60 * 5,
-            'display' => __('Every 5 minutes'),
+            'display' => __('Every 5 minutes','wp-webinarsystem'),
         ];
 
         $schedules['every1minute'] = [
             'interval' => 60,
-            'display' => __('Every 1 minute'),
+            'display' => __('Every 1 minute','wp-webinarsystem'),
         ];
 
         return $schedules;

@@ -145,9 +145,9 @@ $params = isset($params)
                             ?>
                             <tr>
                                 <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: <?php echo esc_attr($params->text_color) ?>; opacity: 0.7; text-align: center;">
-                                    <a href="<?php echo esc_url($params->manage_url) ?>" style="text-decoration: underline; color: <?php echo esc_attr($params->text_color) ?>; font-size: 12px; opacity: 0.7;  text-align: center;"><?php esc_html_e('Manage Subscription', '_wswebinar'); ?></a>
+                                    <a href="<?php echo esc_url($params->manage_url) ?>" style="text-decoration: underline; color: <?php echo esc_attr($params->text_color) ?>; font-size: 12px; opacity: 0.7;  text-align: center;"><?php esc_html_e('Manage Subscription', 'wp-webinarsystem'); ?></a>
                                     |
-                                    <a href="<?php echo esc_url($params->unsubscribe_url) ?>" style="text-decoration: underline; color: <?php echo esc_attr($params->text_color) ?>; font-size: 12px; opacity: 0.7;  text-align: center;"><?php esc_html_e('Unsubscribe', '_wswebinar'); ?></a>
+                                    <a href="<?php echo esc_url($params->unsubscribe_url) ?>" style="text-decoration: underline; color: <?php echo esc_attr($params->text_color) ?>; font-size: 12px; opacity: 0.7;  text-align: center;"><?php esc_html_e('Unsubscribe', 'wp-webinarsystem'); ?></a>
                                 </td>
                             </tr>
                             <?php

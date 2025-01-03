@@ -3,8 +3,8 @@ Contributors: WPWebinarSystem
 Donate link: https://webinarpress.com
 Tags: webinar, stream, seminar, zoom, live
 Requires at least: 4.4.2
-Tested up to: 6.6
-Stable tag: 1.33.24
+Tested up to: 6.7
+Stable tag: 1.33.25
 Requires PHP: 7.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -287,6 +287,10 @@ Didn’t find the answer you were looking for? [Check out our FAQ page](http://w
 7. Attendee list
 
 == Changelog ==
+= 1.33.25 - 2025-01-03
+- Security vulnerabilities update
+- Updated text domain to wp-webinarsystem and revised localization files
+
 = 1.33.24 - 2024-10-01
 - Update Readme file
 

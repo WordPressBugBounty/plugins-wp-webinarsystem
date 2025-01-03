@@ -52,7 +52,7 @@ class WPWS_AC_Connector {
 	  	echo esc_html($extra) . "\n";
 	  }
 	  echo "\n";
-	  print_r($var);
+	  print_r($var); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 	  echo "</" . esc_html($element) . ">";
 		if (!$continue) exit();
 	}

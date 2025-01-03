@@ -22,7 +22,7 @@ class WebinarsysteemMailingListIntegrations {
             try {
                 $account = $aweber->getAccount(get_option('_wswebinar_aweber_accessToken'), get_option('_wswebinar_aweber_accessTokenSecret'));
             } catch (Exception $ex) {
-                update_option(WebinarSysteem::$lang_slug . '_aweber_key_revoked', true);
+                update_option(WebinarSysteem::$lang_slug_old . '_aweber_key_revoked', true);
                 self::revokeAweberConfig();
                 return false;
             }
@@ -200,7 +200,7 @@ class WebinarsysteemMailingListIntegrations {
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.InputNotValidated,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                     $callbackUrl = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
                     list($requestToken, $requestTokenSecret) = $aweber->getRequestToken($callbackUrl);
-                    update_option(WebinarSysteem::$lang_slug . '_aweber_request_token_secret', $requestTokenSecret);
+                    update_option(WebinarSysteem::$lang_slug_old . '_aweber_request_token_secret', $requestTokenSecret);
                     setcookie('webinar_aweberrtkns', $requestTokenSecret);
                     header("Location: {$aweber->getAuthorizeUrl()}");
                     exit();
@@ -213,9 +213,9 @@ class WebinarsysteemMailingListIntegrations {
                 $aweber->user->verifier = $_GET['oauth_verifier'];
                 list($accessToken, $accessTokenSecret) = $aweber->getAccessToken();
 
-                update_option(WebinarSysteem::$lang_slug.'_aweber_accessTokenSecret', $accessTokenSecret);
-                update_option(WebinarSysteem::$lang_slug.'_aweber_accessToken', $accessToken);
-                update_option(WebinarSysteem::$lang_slug.'_aweber_key_success', 1);
+                update_option(WebinarSysteem::$lang_slug_old.'_aweber_accessTokenSecret', $accessTokenSecret);
+                update_option(WebinarSysteem::$lang_slug_old.'_aweber_accessToken', $accessToken);
+                update_option(WebinarSysteem::$lang_slug_old.'_aweber_key_success', 1);
 
                 $home_url = home_url();
                 header('Location: ' . "$home_url/wp-admin/admin.php?page=wswbn-settings#mailing-lists");
@@ -231,10 +231,10 @@ class WebinarsysteemMailingListIntegrations {
             <div class="error">
                 <p><?php echo sprintf( 
                         // translators: %s will be replaced with the admin setting URL.
-                        esc_html__('Unexpectedly aWeber has been disconnected from the server. You are no longer subscribed to aWeber mailinglist. For Changes go to <a href="%s">WebinarSysteem Settings</a>.', '_wswebinar'), "admin.php?page=wswbn-settings"); ?></p>
+                        esc_html__('Unexpectedly aWeber has been disconnected from the server. You are no longer subscribed to aWeber mailinglist. For Changes go to <a href="%s">WebinarSysteem Settings</a>.', 'wp-webinarsystem'), "admin.php?page=wswbn-settings"); ?></p>
             </div>
             <?php
-            update_option(WebinarSysteem::$lang_slug . '_aweber_key_revoked', false);
+            update_option(WebinarSysteem::$lang_slug_old . '_aweber_key_revoked', false);
         }
     }
 
@@ -253,9 +253,9 @@ class WebinarsysteemMailingListIntegrations {
     
     public static function revokeAweberConfig() {
         unset($_COOKIE['webinar_aweberrtkns']);
-        update_option(WebinarSysteem::$lang_slug . '_aweber_accessTokenSecret', '');
-        update_option(WebinarSysteem::$lang_slug . '_aweber_accessToken', '');
-        update_option(WebinarSysteem::$lang_slug . '_aweber_key_success', 1);
+        update_option(WebinarSysteem::$lang_slug_old . '_aweber_accessTokenSecret', '');
+        update_option(WebinarSysteem::$lang_slug_old . '_aweber_accessToken', '');
+        update_option(WebinarSysteem::$lang_slug_old . '_aweber_key_success', 1);
         return true;
     }
 

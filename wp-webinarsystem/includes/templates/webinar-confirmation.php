@@ -154,7 +154,7 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
                 <div style='row'>
                     <div class="col-xs-6 col-xs-offset-2">
                         <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">
-                          <img src="<?php echo esc_url(plugins_url('../images/iecheck.jpg', __FILE__)); ?>" border="0" height="42" width="820" alt="" />
+                          <img src="<?php echo esc_url(plugins_url('../images/iecheck.jpg', __FILE__)); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" border="0" height="42" width="820" alt="" />
                         </a>
                     </div>
                 </div>
@@ -171,11 +171,12 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
                         <div class="row">
                             <div id="embed">
 				<?php if (empty($data_imgvid_url)) { ?>
-    				<img src="<?php echo esc_url($data_defImgUrl); ?>" width="100%" height="315">
+    				<img src="<?php echo esc_url($data_defImgUrl); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" width="100%" height="315">
 				    <?php
 				} else {
 				    switch ($data_imgvid_type):
 					case 'image':
+                        // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
 					    echo '<img src="' . esc_url($data_imgvid_url) . '" width="100%" height="315">';
 					    break;
 					case 'youtube':
@@ -194,7 +195,7 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
 				?>
                             </div>
                             <div id="webinar-link" style="padding:20px;">
-                                <h4 style="color:<?php echo esc_attr($data_tnxp_link_above_clr) ?>;"><?php esc_html_e('Here is the webinar URL...', '_wswebinar') ?></h4>
+                                <h4 style="color:<?php echo esc_attr($data_tnxp_link_above_clr) ?>;"><?php esc_html_e('Here is the webinar URL...', 'wp-webinarsystem') ?></h4>
 
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="theWebinarUrl" value="<?php echo esc_url(get_permalink($post->ID)); ?>"/>
@@ -202,7 +203,7 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
                                         <button style="top:0px; padding: 9px 15px;" data-clipboard-text="<?php echo esc_url(get_permalink($post->ID)); ?>" class="btn btn-default " id="copyToClip"><span class="glyphicon glyphicon-link"></button>
                                     </span>
                                 </div>
-                                <h5 style="color:<?php echo esc_url($data_tnxp_link_below_clr) ?>;"><?php esc_html_e('Save and bookmark this URL so you can get access to the webinar...', '_wswebinar') ?></h5>
+                                <h5 style="color:<?php echo esc_url($data_tnxp_link_below_clr) ?>;"><?php esc_html_e('Save and bookmark this URL so you can get access to the webinar...', 'wp-webinarsystem') ?></h5>
                             </div>
                         </div>
                     </div>
@@ -212,8 +213,8 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
 
                                 <div style="font-size: 40pt;margin: 5px 10px;" class="pull-left glyphicon glyphicon-film"></div>
                                 <div class="pull-left">
-                                    <h4><?php esc_html_e('Your Webinar Ticket', '_wswebinar') ?></h4>
-                                    <h6><?php esc_html_e('The Webinar Event Information...', '_wswebinar') ?></h6>
+                                    <h4><?php esc_html_e('Your Webinar Ticket', 'wp-webinarsystem') ?></h4>
+                                    <h6><?php esc_html_e('The Webinar Event Information...', 'wp-webinarsystem') ?></h6>
                                 </div> <br/>
 
                             </div>
@@ -224,11 +225,11 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
 					<?php
 					$dateTimeIsSet = empty($attend_time);
 					?>
-                        <div id="ticket-webinar-title" class="ticket-info"><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Webinar', '_wswebinar') ?></span><span class="tick-right"><?php echo esc_attr(get_the_title()); ?></span></div>
-                        <div id="ticket-webinar-host" class="ticket-info"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Host', '_wswebinar') ?></span><span class="tick-right"><?php echo esc_attr(get_post_meta($post->ID, '_wswebinar_hostmetabox_hostname', true)); ?></span></div>
+                        <div id="ticket-webinar-title" class="ticket-info"><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Webinar', 'wp-webinarsystem') ?></span><span class="tick-right"><?php echo esc_attr(get_the_title()); ?></span></div>
+                        <div id="ticket-webinar-host" class="ticket-info"><span class="glyphicon glyphicon-bullhorn"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Host', 'wp-webinarsystem') ?></span><span class="tick-right"><?php echo esc_attr(get_post_meta($post->ID, '_wswebinar_hostmetabox_hostname', true)); ?></span></div>
 					<?php if (!$dateTimeIsSet): ?>
-    					<div id="ticket-webinar-date" class="ticket-info"><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Date', '_wswebinar') ?></span><span class="tick-right"><?php echo esc_attr(date_i18n($dateFormat, $attend_time)); ?></span></div>
-    					<div id="ticket-webinar-time" class="ticket-info"><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Time', '_wswebinar') ?></span><span class="tick-right"><?php echo esc_attr(date_i18n($timeFormat, $attend_time)) . ' ' . esc_attr($timeZone); ?></span></div>
+    					<div id="ticket-webinar-date" class="ticket-info"><span class="glyphicon glyphicon-calendar"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Date', 'wp-webinarsystem') ?></span><span class="tick-right"><?php echo esc_attr(date_i18n($dateFormat, $attend_time)); ?></span></div>
+    					<div id="ticket-webinar-time" class="ticket-info"><span class="glyphicon glyphicon-time"></span>&nbsp;&nbsp;<span class="tick-left"><?php esc_html_e('Time', 'wp-webinarsystem') ?></span><span class="tick-right"><?php echo esc_attr(date_i18n($timeFormat, $attend_time)) . ' ' . esc_attr($timeZone); ?></span></div>
 					<?php endif; ?>
                                     </div>
 				    <?php
@@ -243,18 +244,18 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
 					    //_e('Join webinar now', '_wswebinar');
 					    switch ($wbstatus):
 						case 'liv':
-						    esc_html_e('Join Webinar in Progress...', '_wswebinar');
+						    esc_html_e('Join Webinar in Progress...', 'wp-webinarsystem');
 						    $join_now_btn = FALSE;
 						    break;
 						case 'cou':
                             $join_now_btn ? 
-                                esc_html_e('Join Webinar in Progress...', '_wswebinar')
+                                esc_html_e('Join Webinar in Progress...', 'wp-webinarsystem')
                                 :
-                                esc_html_e('Go to Webinar...', '_wswebinar');
+                                esc_html_e('Go to Webinar...', 'wp-webinarsystem');
 						    $join_now_btn = FALSE;
 						    break;
 						case 'rep':
-						    esc_html_e('View Webinar Replay', '_wswebinar');
+						    esc_html_e('View Webinar Replay', 'wp-webinarsystem');
 						    $join_now_btn = FALSE;
 						    break;
 					    endswitch;
@@ -267,12 +268,12 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
                         <?php if ($enable_socialsharing) { ?>
                         <div id="webinar-socialsharing" class="tnxp-box" style="background-color: <?php echo esc_attr($data_tnxp_socialsharing_bckg_clr) ?>;border-color: <?php echo esc_attr($data_tnxp_socialsharing_border_clr) ?>;">
                             <div class="social-buttons">
-                                <a href="#" onClick="window.open('http://www.facebook.com/sharer/sharer.php?u=<?php echo esc_url(get_permalink($post->ID)); ?>', 'webinar-fb', 'width=500,height=500')"><img src="<?php echo esc_url(plugins_url('../images/ui/fb.png', __FILE__)); ?>"/></a>
+                                <a href="#" onClick="window.open('http://www.facebook.com/sharer/sharer.php?u=<?php echo esc_url(get_permalink($post->ID)); ?>', 'webinar-fb', 'width=500,height=500')"><img src="<?php echo esc_url(plugins_url('../images/ui/fb.png', __FILE__)); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"/></a>
                                 <span>
-                                    <a href="https://twitter.com/intent/tweet?text=<?php echo esc_attr(get_the_title()); ?>&url=<?php echo esc_url(get_permalink($post->ID)); ?>" target="_blank"><img src="<?php echo esc_url(plugins_url('../images/ui/tw.png', __FILE__)); ?>"/></a>
+                                    <a href="https://twitter.com/intent/tweet?text=<?php echo esc_attr(get_the_title()); ?>&url=<?php echo esc_url(get_permalink($post->ID)); ?>" target="_blank"><img src="<?php echo esc_url(plugins_url('../images/ui/tw.png', __FILE__)); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"/></a>
                                 </span>
                                 <span>
-                                    <a href="#" onClick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo esc_url(urlencode(get_permalink($post->ID))); ?>&title=<?php echo esc_attr(urlencode(get_the_title())); ?>&summary=<?php echo esc_attr(urlencode(wp_strip_all_tags(get_the_content(), true))); ?>', 'webinar-linkedin', 'width=500,height=500')"><img src="<?php echo esc_url(plugins_url('../images/ui/li.png', __FILE__)); ?>"/></a>
+                                    <a href="#" onClick="window.open('http://www.linkedin.com/shareArticle?mini=true&url=<?php echo esc_url(urlencode(get_permalink($post->ID))); ?>&title=<?php echo esc_attr(urlencode(get_the_title())); ?>&summary=<?php echo esc_attr(urlencode(wp_strip_all_tags(get_the_content(), true))); ?>', 'webinar-linkedin', 'width=500,height=500')"><img src="<?php echo esc_url(plugins_url('../images/ui/li.png', __FILE__)); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>"/></a>
                                 </span>
                             </div>
                         </div>
@@ -281,8 +282,8 @@ $body_script = get_post_meta($post->ID, '_wswebinar_tnxp_script_body', true);
                         <div id="webinar-calender" class="tnxp-box" style="color:<?php echo esc_attr($data_tnxp_calendartxt_clr) ?>;  position: relative; overflow: visible;  background-color: <?php echo esc_attr($data_tnxp_calendar_bckg_clr) ?>;border-color: <?php echo esc_attr($data_tnxp_calendar_border_clr) ?>;">
                             <div style="font-size: 40pt;margin: 5px 10px;" class="pull-left glyphicon glyphicon-calendar"></div>
                             <div class="pull-left">
-                                <h4><?php esc_html_e('Add To Your Calendar', '_wswebinar') ?></h4>
-                                <h6><?php esc_html_e('Remind Yourself Of The Event', '_wswebinar') ?></h6>
+                                <h4><?php esc_html_e('Add To Your Calendar', 'wp-webinarsystem') ?></h4>
+                                <h6><?php esc_html_e('Remind Yourself Of The Event', 'wp-webinarsystem') ?></h6>
                             </div><br/>
                             <div style="border-top: 2px dotted #e7e4e0; margin-top: 43px;"></div>
                             <div style="width:100%;">

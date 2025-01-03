@@ -100,6 +100,11 @@ class WebinarSysteemAjax
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;
 
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_createwebinars' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
+
         if (empty($request->img_values) || empty($request->img_names)) {
             wp_send_json_error(null, 400);
         }
@@ -109,6 +114,15 @@ class WebinarSysteemAjax
         $count = 0;
 
         foreach ($request->img_values as $imgUrl) {
+            // Validate file type
+            $file_info = pathinfo( $imgUrl );
+            $file_ext = strtolower( $file_info['extension'] );
+            $allowed_types = [ 'jpg', 'jpeg', 'png', 'gif' ];
+
+            if ( ! in_array( $file_ext, $allowed_types ) ) {
+                wp_send_json_error( 'Invalid file type.', 400 );
+            }
+
             // Download to current server
             if ($status = self::does_url_exist($imgUrl)) {
                 $newImgName = basename($imgUrl);
@@ -384,6 +398,11 @@ class WebinarSysteemAjax
     public static function update_incentive()
     {
         WebinarSysteemJS::check_ajax_nonce();
+
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_createwebinars' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
         // TODO, refactor this when releasing the new live view
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;
@@ -460,6 +479,12 @@ class WebinarSysteemAjax
     public static function setHostUpdateBox()
     {
         WebinarSysteemJS::check_ajax_nonce();
+
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_createwebinars' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
+        
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;
 
@@ -521,6 +546,12 @@ class WebinarSysteemAjax
     public static function deleteChats()
     {
         WebinarSysteemJS::check_ajax_nonce();
+
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_managechatlogs' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
+        
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;
 
@@ -553,6 +584,11 @@ class WebinarSysteemAjax
     public static function deleteQuestions()
     {
         WebinarSysteemJS::check_ajax_nonce();
+
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_managequestions' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
         
         global $wpdb;
 
@@ -1707,6 +1743,11 @@ class WebinarSysteemAjax
     {
         WebinarSysteemJS::check_ajax_nonce();
 
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_createwebinars' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
+
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;
 
@@ -1726,6 +1767,11 @@ class WebinarSysteemAjax
     public static function update_webinar_status()
     {
         WebinarSysteemJS::check_ajax_nonce();
+
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_createwebinars' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;
@@ -1747,6 +1793,11 @@ class WebinarSysteemAjax
     public static function update_webinar_params()
     {
         WebinarSysteemJS::check_ajax_nonce();
+
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_createwebinars' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;
@@ -2163,6 +2214,11 @@ class WebinarSysteemAjax
     public static function import_attendees()
     {
         WebinarSysteemJS::check_ajax_nonce();
+
+        // Capability check
+        if ( ! current_user_can( '_wswebinar_managesubscribers' ) ) {
+            wp_send_json_error( 'Permission denied.', 403 );
+        }
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         $request = (object)$_POST;

@@ -58,14 +58,14 @@ class WebinarSysteemRegistrationWidget extends WebinarSysteemPostTypeBase
     {
         register_post_type(WebinarSysteemRegistrationWidget::$post_type, [
             'labels' => [
-                'name' => __('Registration Widgets', '_wswebinar'),
-                'singular_name' => __('Registration Widget', '_wswebinar'),
-                'name_admin_bar' => __('Registration Widget', '_wswebinar'),
-                'add_new' => __('Add Registration Widget', '_wswebinar'),
-                'add_new_item' => __('Add Registration Widget', '_wswebinar'),
-                'new_item' => __('New Registration Widget', '_wswebinar'),
-                'edit_item' => __('Edit Registration Widget', '_wswebinar'),
-                'view_item' => __('View Registration Widget', '_wswebinar'),
+                'name' => __('Registration Widgets', 'wp-webinarsystem'),
+                'singular_name' => __('Registration Widget', 'wp-webinarsystem'),
+                'name_admin_bar' => __('Registration Widget', 'wp-webinarsystem'),
+                'add_new' => __('Add Registration Widget', 'wp-webinarsystem'),
+                'add_new_item' => __('Add Registration Widget', 'wp-webinarsystem'),
+                'new_item' => __('New Registration Widget', 'wp-webinarsystem'),
+                'edit_item' => __('Edit Registration Widget', 'wp-webinarsystem'),
+                'view_item' => __('View Registration Widget', 'wp-webinarsystem'),
 			],
             'public' => true,
             'has_archive' => false,

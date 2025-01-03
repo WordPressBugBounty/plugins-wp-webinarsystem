@@ -234,7 +234,7 @@ WebinarSysteemWebinarCache::write($post->ID);
     <div style='row'>
         <div class="col-xs-6 col-xs-offset-2">
             <a href="http://www.microsoft.com/windows/internet-explorer/default.aspx">
-                <img src="<?php echo esc_url(plugins_url('../images/iecheck.jpg', __FILE__)); ?>" border="0" height="42"
+                <img src="<?php echo esc_url(plugins_url('../images/iecheck.jpg', __FILE__)); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" border="0" height="42"
                      width="820" alt=""/>
             </a>
         </div>
@@ -256,11 +256,12 @@ WebinarSysteemWebinarCache::write($post->ID);
                 <?php
                 if (empty($data_imgvid_url)) {
                     ?>
-                    <img src="<?php echo esc_url($data_defImgUrl); ?>" width="100%" height="315">
+                    <img src="<?php echo esc_url($data_defImgUrl); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" width="100%" height="315">
                     <?php
                 } else {
                     switch ($data_imgvid_type) {
                         case 'image':
+                            // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage
                             echo '<img src="' . esc_url($data_imgvid_url) . '" width="100%" height="500px">';
                             break;
                         case 'youtube':
@@ -338,7 +339,7 @@ WebinarSysteemWebinarCache::write($post->ID);
                 <div style="<?php echo($data_show_presenter == 'yes' ? 'display: block;' : 'display: none;'); ?>"
                      class="<?php echo($data_show_presenter == 'yes' ? 'show' : ''); ?>" id="host_box">
                     <div class="live-title"
-                         style="color:<?php echo esc_attr($data_livep_hostbox_title_text_clr) ?>; background-color: <?php echo esc_attr($data_livep_hostbox_title_bckg_clr) ?>;"><?php $host_text = _n('Host', 'Hosts', $data_hostcount, '_wswebinar'); echo esc_html($host_text); ?></div>
+                         style="color:<?php echo esc_attr($data_livep_hostbox_title_text_clr) ?>; background-color: <?php echo esc_attr($data_livep_hostbox_title_bckg_clr) ?>;"><?php $host_text = _n('Host', 'Hosts', $data_hostcount, 'wp-webinarsystem'); echo esc_html($host_text); ?></div>
                     <div class="livep-content" style="color:<?php echo esc_attr($data_livep_hostbox_content_text_clr) ?>;">
                         <?php
                         foreach ($data_hostnames as $hostname) {
@@ -350,7 +351,7 @@ WebinarSysteemWebinarCache::write($post->ID);
                 <div id="description_box" class="<?php echo($data_show_desc == 'yes' ? 'show' : ''); ?>"
                      style="<?php echo($data_show_desc == 'yes' ? 'display: block;' : 'display: none;'); ?>">
                     <div class="live-title"
-                         style="color:<?php echo esc_attr($data_livep_descbox_title_text_clr) ?>;background-color:<?php echo esc_attr($data_livep_descbox_title_bckg_clr) ?>;"><?php esc_html_e('Information', '_wswebinar') ?></div>
+                         style="color:<?php echo esc_attr($data_livep_descbox_title_text_clr) ?>;background-color:<?php echo esc_attr($data_livep_descbox_title_bckg_clr) ?>;"><?php esc_html_e('Information', 'wp-webinarsystem') ?></div>
                     <div class="livep-content"
                          style="color:<?php echo esc_attr($data_livep_descbox_content_text_clr); ?>"><?php the_content(); ?></div>
                 </div>
@@ -370,11 +371,11 @@ WebinarSysteemWebinarCache::write($post->ID);
                     style="margin-bottom: -10px; margin-top: 10px;">
                     <li class="wp_livep_tabhead" id="webinar_quesbox_tabhead"
                         style="border-color: <?php echo esc_attr($data_livep_questiontab_borderclr) ?> ; display: none;"><a
-                                style="color: <?php echo esc_attr($data_livep_questiontab_title_clr) ?>; background-color: <?php echo esc_attr($data_livep_questiontab_title_bgclr); ?>;"><?php echo(!empty($data_livep_questiontab_title) ? esc_attr($data_livep_questiontab_title) : esc_html__('Question Box', '_wswebinar')) ?></a>
+                                style="color: <?php echo esc_attr($data_livep_questiontab_title_clr) ?>; background-color: <?php echo esc_attr($data_livep_questiontab_title_bgclr); ?>;"><?php echo(!empty($data_livep_questiontab_title) ? esc_attr($data_livep_questiontab_title) : esc_html__('Question Box', 'wp-webinarsystem')) ?></a>
                     </li>
                     <li class="wp_livep_tabhead" id="webinar_chatbox_tabhead"
                         style="border-color:<?php echo esc_attr($data_livep_chatbox_borderclr); ?> ; display: none;"><a
-                                style="color: <?php echo esc_attr($data_livep_questiontab_chat_tcolor) ?>; background-color:<?php echo esc_attr($data_livep_questiontab_chat_bcolor); ?>;"><?php echo(!empty($data_livep_questiontab_chat_title) ? esc_attr($data_livep_questiontab_chat_title) : esc_html__('Chat box', '_wswebinar'));
+                                style="color: <?php echo esc_attr($data_livep_questiontab_chat_tcolor) ?>; background-color:<?php echo esc_attr($data_livep_questiontab_chat_bcolor); ?>;"><?php echo(!empty($data_livep_questiontab_chat_title) ? esc_attr($data_livep_questiontab_chat_title) : esc_html__('Chat box', 'wp-webinarsystem'));
                             ?></a></li>
                 </ul>
 
@@ -383,32 +384,32 @@ WebinarSysteemWebinarCache::write($post->ID);
                         <div class="round-border signup"
                              style="margin-top: 10px; background-color: <?php echo esc_attr($data_livep_askq_bckg_clr) ?>;border-color:<?php echo esc_attr($data_livep_askq_border_clr) ?>">
                             <h2 style="color:<?php echo esc_attr($data_askq_title_text_clr); ?>;"
-                                class="live-title-sub"><?php esc_html_e('Ask your question!', '_wswebinar') ?></h2>
+                                class="live-title-sub"><?php esc_html_e('Ask your question!', 'wp-webinarsystem') ?></h2>
                             <div style="margin-left: 10px;">
                                 <form id="addQuestionForm">
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                               placeholder="<?php esc_html_e('Your name', '_wswebinar'); ?>"
+                                               placeholder="<?php esc_html_e('Your name', 'wp-webinarsystem'); ?>"
                                                id="que_name" name="que_name"
                                                value="<?php echo(empty($attendee) ? '' : esc_attr($attendee->name)); ?>">
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control"
-                                               placeholder="<?php esc_html_e('Your email', '_wswebinar'); ?>"
+                                               placeholder="<?php esc_html_e('Your email', 'wp-webinarsystem'); ?>"
                                                id="que_email"
                                                value="<?php echo(empty($attendee) ? '' : esc_attr($attendee->email)); ?>">
                                     </div>
                                     <div class="form-group">
                                         <textarea rows="4" cols="50" class="form-control" id="addQuestion"
-                                                  placeholder="<?php esc_html_e('Type your question here..', '_wswebinar'); ?>"
+                                                  placeholder="<?php esc_html_e('Type your question here..', 'wp-webinarsystem'); ?>"
                                                   draggable></textarea>
                                     </div>
                                     <input type="submit" id="saveQuestion" class="btn btn-success"
-                                           value="<?php esc_html_e('Ask Question!', '_wswebinar') ?>">
+                                           value="<?php esc_html_e('Ask Question!', 'wp-webinarsystem') ?>">
                                 </form>
                             </div>
                             <div id="myQuestions" style="display:none;">
-                                <h3 class="live-title-sub"><?php esc_html_e('My Questions', '_wswebinar') ?></h3>
+                                <h3 class="live-title-sub"><?php esc_html_e('My Questions', 'wp-webinarsystem') ?></h3>
                                 <span id="ques_load"></span>
                             </div>
                         </div>
@@ -419,11 +420,11 @@ WebinarSysteemWebinarCache::write($post->ID);
                         <div class="signup"
                              style="margin-top: 10px; background-color: <?php echo esc_attr($data_livep_chatbox_bgclr) ?>;border-color:<?php echo esc_attr($data_livep_askq_border_clr) ?>; text-align: left; margin: 0px 0px 0px 0px;">
                             <h2 style="color:<?php echo esc_attr($data_livep_chatbox_txtclr); ?>;"
-                                class="live-title-sub"><?php esc_html_e('Live Chat', '_wswebinar') ?></h2>
+                                class="live-title-sub"><?php esc_html_e('Live Chat', 'wp-webinarsystem') ?></h2>
                             <?php if (!current_user_can('manage_options')): ?>
                                 <input data-off-color="webinar-bswitchoff" data-on-color="webinar-bswitchon"
-                                       data-on-text="<?php esc_html_e('Private', '_wswebinar') ?>"
-                                       data-off-text="<?php esc_html_e('Public', '_wswebinar') ?>" type="checkbox"
+                                       data-on-text="<?php esc_html_e('Private', 'wp-webinarsystem') ?>"
+                                       data-off-text="<?php esc_html_e('Public', 'wp-webinarsystem') ?>" type="checkbox"
                                        name="wsweb_private_chat">
                             <?php endif; //webinar-bswitchoff     ?>
                             <div class="weninar-chat-showbox box_shadow">
@@ -447,7 +448,7 @@ WebinarSysteemWebinarCache::write($post->ID);
                                                     data-isadmin="<?php echo(current_user_can('manage_options') ? 'true' : 'false'); ?>"
                                                     data-show-timestamp="<?php echo($data_livep_chat_timestamp == 'yes' ? 'true' : 'false'); ?>"
                                             >
-                                                <?php esc_html_e('Send', '_wswebinar') ?>
+                                                <?php esc_html_e('Send', 'wp-webinarsystem') ?>
                                             </button>
                                         </div>
                                     </div>
@@ -480,8 +481,8 @@ WebinarSysteemWebinarCache::write($post->ID);
 
         <script>
             var theWebinarId = <?php echo intval($post->ID); ?>;
-            var questionFormerror = '<?php esc_html_e('Something is wrong with your Add Questions form. Please re-check all fields are filled correctly', '_wswebinar') ?>';
-            var questionWait = '<?php esc_html_e('Please wait..', '_wswebinar') ?>';
+            var questionFormerror = '<?php esc_html_e('Something is wrong with your Add Questions form. Please re-check all fields are filled correctly', 'wp-webinarsystem') ?>';
+            var questionWait = '<?php esc_html_e('Please wait..', 'wp-webinarsystem') ?>';
             var theWebinarstatus = '<?php echo esc_attr(empty($status) ? 'replay' : $status); ?>';
             var pageCategory = '<?php echo esc_attr($data_page_cat); ?>';
             var fetchValues = true;

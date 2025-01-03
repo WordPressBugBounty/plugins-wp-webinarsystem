@@ -3,8 +3,8 @@ class WebinarSysteemUserPages {
 	static function register_post_type() {
 		register_post_type('wpws_page', [
           'labels' => [
-            'name' => __('WPWS Page', '_wswebinar') ,
-            'singular_name' => __('WPWS Page', '_wswebinar')
+            'name' => __('WPWS Page', 'wp-webinarsystem') ,
+            'singular_name' => __('WPWS Page', 'wp-webinarsystem')
           ],
           'public' => true,
           'has_archive' => false,
@@ -27,8 +27,8 @@ class WebinarSysteemUserPages {
             'post_status' => 'publish',
             'post_type' => 'wpws_page',
             'post_author' => 1,
-            'post_content' => __('You are now unsubscribed', '_wswebinar'),
-            'post_title' => __('Webinar Subscription', '_wswebinar'),
+            'post_content' => __('You are now unsubscribed', 'wp-webinarsystem'),
+            'post_title' => __('Webinar Subscription', 'wp-webinarsystem'),
             'post_name' => 'webinar-unsubscribe'
 		]);
 		
@@ -47,7 +47,7 @@ class WebinarSysteemUserPages {
             'post_type' => 'wpws_page',
             'post_author' => 1,
             'post_content' => '[wpws_overview]',
-            'post_title' => __('Webinar Overview', '_wswebinar'),
+            'post_title' => __('Webinar Overview', 'wp-webinarsystem'),
             'post_name' => 'webinar-overview'
 		]);
 		
@@ -130,28 +130,28 @@ class WebinarSysteemUserPages {
             if ($is_unsubscribed) {
                 ?>
                 <p>
-                <?php echo esc_html_e('You have been unsubscribed from all webinar emails', '_wswebinar') ?>
+                <?php echo esc_html_e('You have been unsubscribed from all webinar emails', 'wp-webinarsystem') ?>
                 </p>
                 <p>
                     <button
                         class="webinarpress-button webinarpress-subscribe"
                         type="submit"
                     >
-                        <?php echo esc_html_e('Subscribe again', '_wswebinar') ?>
+                        <?php echo esc_html_e('Subscribe again', 'wp-webinarsystem') ?>
                     </button>
                 </p>
                 <?php
             } else {
                 ?>
                 <p>
-                    <?php echo esc_html_e('You are subscribed to webinar emails', '_wswebinar') ?>
+                    <?php echo esc_html_e('You are subscribed to webinar emails', 'wp-webinarsystem') ?>
                 </p>
                 <p>
                     <button
                         class="webinarpress-button webinarpress-unsubscribe"
                         type="submit"
                     >
-                        <?php echo esc_html_e('Unsubscribe', '_wswebinar') ?>
+                        <?php echo esc_html_e('Unsubscribe', 'wp-webinarsystem') ?>
                     </button>
                 </p>
                 <?php

@@ -27,13 +27,13 @@ class WebinarSysteemPromotionalNotices {
         ?>
         <div class="ws-notice">
             <div class="notice-image-container">
-                <img src="<?php echo esc_url(plugins_url('./images/webinarbot-valentine-hearteyes.png', __FILE__)) ?>" height="100">
+                <img src="<?php echo esc_url(plugins_url('./images/webinarbot-valentine-hearteyes.png', __FILE__)); // phpcs:ignore PluginCheck.CodeAnalysis.ImageFunctions.NonEnqueuedImage ?>" height="100">
             </div>
             <div class="notice-text">
-                <?php esc_html_e("Hey", '_wswebinar'); ?> <strong><?php echo esc_html($current_user->display_name); ?></strong><?php esc_html_e(", thank you for using my plugin. Want more functionalities like automated, recurring and paid webinars? Then download <strong>WebinarPress Pro during this Valentine's celebration with 30% off!</strong> This promotion is only for you as a user of this free version of WebinarPress.<br>Use coupon <strong>lovewebinarbot</strong> during checkout.<br>Love, Webinarbot", '_wswebinar'); ?>
+                <?php esc_html_e("Hey", 'wp-webinarsystem'); ?> <strong><?php echo esc_html($current_user->display_name); ?></strong><?php esc_html_e(", thank you for using my plugin. Want more functionalities like automated, recurring and paid webinars? Then download <strong>WebinarPress Pro during this Valentine's celebration with 30% off!</strong> This promotion is only for you as a user of this free version of WebinarPress.<br>Use coupon <strong>lovewebinarbot</strong> during checkout.<br>Love, Webinarbot", 'wp-webinarsystem'); ?>
             </div>
             <div class="notice-button-container">
-                <a class="button button-primary" href="http://www.wpwebinarsystem.com/?utm_source=pluginfreeversion&utm_medium=notification&utm_content=valentineweekend&utm_campaign=valentinenotification" target="_blank"><?php esc_html_e('Yes, download Pro!', '_wswebinar') ?></a><br/>
+                <a class="button button-primary" href="http://www.wpwebinarsystem.com/?utm_source=pluginfreeversion&utm_medium=notification&utm_content=valentineweekend&utm_campaign=valentinenotification" target="_blank"><?php esc_html_e('Yes, download Pro!', 'wp-webinarsystem') ?></a><br/>
                 <div class="welcome-panel-close" data-notice-slug="valentine">
                     Dismiss
                 </div>

@@ -86,7 +86,7 @@ class WebinarSysteemUpcomingWebinars extends WP_Widget {
                         } else {
                             break;
                         }
-                        wp_reset_query();
+                        wp_reset_postdata();
                     }
                 }
                 asort($webinar_rightnow_posts_set);

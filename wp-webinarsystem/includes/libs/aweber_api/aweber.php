@@ -256,7 +256,7 @@ class WSAWeberAPI extends WSAWeberAPIBase {
      */
     public function __get($item) {
         if ($item == 'user') return $this->adapter->user;
-        trigger_error("Could not find ".esc_html($item));
+        trigger_error("Could not find ".esc_html($item)); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_trigger_error
     }
 
     /**

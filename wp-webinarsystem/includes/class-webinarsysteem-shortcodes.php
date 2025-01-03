@@ -42,13 +42,13 @@ class WebinarSysteemShortCodes
 
         //If posts exists
         if (get_post_status($attrs['id']) === FALSE) {
-            __('Error: ', '_wswebinar') . __('Invalid webinar id.', '_wswebinar');
+            __('Error: ', 'wp-webinarsystem') . __('Invalid webinar id.', 'wp-webinarsystem');
             $content = ob_get_clean();
             return $content;
         }
 
         $meta_btn_txt = get_post_meta($attrs['id'], '_wswebinar_regp_ctatext', true);
-        $registerButtonText = (!empty($attrs['button']) ? $attrs['button'] : (!empty($meta_btn_txt) ? $meta_btn_txt : __('Sign Up', '_wswebinar')));
+        $registerButtonText = (!empty($attrs['button']) ? $attrs['button'] : (!empty($meta_btn_txt) ? $meta_btn_txt : __('Sign Up', 'wp-webinarsystem')));
 
         $postId = $attrs['id'];
         $url = $attrs['url'];
@@ -64,7 +64,7 @@ class WebinarSysteemShortCodes
         if (!empty($registration_disabled)) {
             ?>
             <div class="text-center round-border-full signup">
-                <h1><?php esc_html_e('Registration is closed for this webinar.', '_wswebinar') ?></h1>
+                <h1><?php esc_html_e('Registration is closed for this webinar.', 'wp-webinarsystem') ?></h1>
             </div>
             <?php
             $content = ob_get_clean();
@@ -78,10 +78,10 @@ class WebinarSysteemShortCodes
             <?php } ?>
             <input type="hidden" name="webinar_id" value="<?php echo intval($postId) ?>">
             <input class="form-control forminputs wswebinarsys-registration-name-input" name="inputname" required
-                   placeholder="<?php esc_html_e('Your Name', '_wswebinar') ?>" type="text" />
+                   placeholder="<?php esc_html_e('Your Name', 'wp-webinarsystem') ?>" type="text" />
 
             <input class="form-control forminputs wswebinarsys-registration-email-input" name="inputemail" required
-                   placeholder="<?php esc_html_e('Your Email Address', '_wswebinar') ?>" type="email" />
+                   placeholder="<?php esc_html_e('Your Email Address', 'wp-webinarsystem') ?>" type="email" />
 
             <?php
             $fields = $webinar->get_custom_fields();
@@ -127,7 +127,7 @@ class WebinarSysteemShortCodes
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended
             if (!empty($_REQUEST['error']) && $_REQUEST['error'] == 'notregisterd'): 
         ?>
-        <span class="error"><?php esc_html_e('This email is not registered.', '_wswebinar') ?></span>
+        <span class="error"><?php esc_html_e('This email is not registered.', 'wp-webinarsystem') ?></span>
     <?php
     endif;
         $content = ob_get_clean();
@@ -151,7 +151,7 @@ class WebinarSysteemShortCodes
         ob_start();
 
         if (get_post_status($attrs['id']) === FALSE) {
-            __('Error: ') . __('Invalid webinar id.', '_wswebinar');
+            __('Error: ','wp-webinarsystem') . __('Invalid webinar id.', 'wp-webinarsystem');
             $content = ob_get_clean();
             return $content;
         }
@@ -167,11 +167,11 @@ class WebinarSysteemShortCodes
         ?>
         <form method="POST" name="wpws_webinar_login">
             <span class="error login_error">
-                <?php esc_html_e('This email is not registered.', '_wswebinar') ?>
+                <?php esc_html_e('This email is not registered.', 'wp-webinarsystem') ?>
             </span>
             <input type="hidden" name="webinar_id" value="<?php echo INTVAL($postId) ?>">
             <input class="form-control forminputs wswebinarsys-login-email-input" name="inputemail"
-                   placeholder="<?php esc_html_e('Your Email Address', '_wswebinar') ?>" type="email" />
+                   placeholder="<?php esc_html_e('Your Email Address', 'wp-webinarsystem') ?>" type="email" />
             <button class="forminputs wswebinarsys-login-submit-btn"
                     type="submit"><?php echo esc_html($loginButtonText) ?></button>
         </form>

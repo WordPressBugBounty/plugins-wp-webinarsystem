@@ -41,10 +41,10 @@ $data_backg_img = get_post_meta($post->ID, '_wswebinar_closedp_bckg_img', true);
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="closed">
-                        <?php esc_html_e('Unfortunately, this webinar is closed.', '_wswebinar'); ?>
+                        <?php esc_html_e('Unfortunately, this webinar is closed.', 'wp-webinarsystem'); ?>
                     </h2>
                     <h3 class="closed">
-                        <a href="<?php echo esc_url(home_url('/')); ?>"> <?php esc_html_e('Click here', '_wswebinar'); ?> </a> <?php esc_html_e('to go to our homepage.', '_wswebinar'); ?>
+                        <a href="<?php echo esc_url(home_url('/')); ?>"> <?php esc_html_e('Click here', 'wp-webinarsystem'); ?> </a> <?php esc_html_e('to go to our homepage.', 'wp-webinarsystem'); ?>
                     </h3>
                 </div>
             </div>

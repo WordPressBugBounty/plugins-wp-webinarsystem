@@ -467,7 +467,7 @@ class WSOAuthApplication implements WSAWeberOAuthAdapter {
         // enable debug output
         if ($this->debug) {
             echo "<pre>";
-            print_r($oauth);
+            print_r($oauth); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
             echo " --> Status: {".esc_html($resp->headers['Status-Code'])."}\n";
             echo " --> Body: {".esc_html($resp->body)."}";
             echo "</pre>";

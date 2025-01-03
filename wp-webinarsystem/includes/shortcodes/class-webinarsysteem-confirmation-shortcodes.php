@@ -90,7 +90,7 @@ class WebinarSysteemConfirmationShortCodes
 
         $attributes = shortcode_atts([
             'class' => '',
-            'text' => __('Go to webinar', '_wswebinar'),
+            'text' => __('Go to webinar', 'wp-webinarsystem'),
         ], $attributes, 'webinar_text_link');
 
         ob_start();
@@ -112,7 +112,7 @@ class WebinarSysteemConfirmationShortCodes
         }
 
         $attributes = shortcode_atts([
-            'button_text' => __('Go to webinar', '_wswebinar'),
+            'button_text' => __('Go to webinar', 'wp-webinarsystem'),
             'button_color' => '#9006f7',
             'text_color' => '#ffffff',
             'class' => '',
@@ -184,7 +184,7 @@ class WebinarSysteemConfirmationShortCodes
 
         $attributes = shortcode_atts([
             'locale' => 'en',
-            'button_text' => __('Add to Calendar', '_wswebinar'),
+            'button_text' => __('Add to Calendar', 'wp-webinarsystem'),
             'button_color' => '#9006f7',
             'text_color' => '#ffffff',
             'class' => '',

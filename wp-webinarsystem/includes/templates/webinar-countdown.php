@@ -92,21 +92,21 @@ $body_script = get_post_meta($post->ID, '_wswebinar_cntdwnp_script_body', true);
                         <h2 class="countdown" style="color:<?php echo esc_attr($data_title_clr) ?>;">
 
                             "<?php the_title(); ?>"
-                            <span class="hideIfCountdownStop"><?php esc_html_e('will begin in', '_wswebinar') ?></span>
-                            <span class="showIfCountdownStop"><?php esc_html_e('will begin shortly', '_wswebinar') ?></span>
+                            <span class="hideIfCountdownStop"><?php esc_html_e('will begin in', 'wp-webinarsystem') ?></span>
+                            <span class="showIfCountdownStop"><?php esc_html_e('will begin shortly', 'wp-webinarsystem') ?></span>
                         </h2>
                     <?php } else { ?>
                         <h2 class="countdown" style="color:<?php echo esc_attr($data_title_clr) ?>;">
                             "<?php the_title(); ?>"
-                            <?php esc_html_e('will start', '_wswebinar');
-                            echo (!empty($date_date) ? '<br>' . esc_html_e('on', '_wswebinar') . ' ' . esc_attr($date_date) . '  ' : null);
-                            echo (!empty($data_min) || !empty($data_hr) ? esc_html_e('at', '_wswebinar') . ' ' . esc_attr($wb_time) : NULL );
+                            <?php esc_html_e('will start', 'wp-webinarsystem');
+                            echo (!empty($date_date) ? '<br>' . esc_html_e('on', 'wp-webinarsystem') . ' ' . esc_attr($date_date) . '  ' : null);
+                            echo (!empty($data_min) || !empty($data_hr) ? esc_html_e('at', 'wp-webinarsystem') . ' ' . esc_attr($wb_time) : NULL );
 							echo ' '.esc_attr($timeZone);
                             ?>
                         </h2>
                     <?php  ?>
                     <h3 class="text-center" id="countd_notice" style="display: block; color:<?php echo esc_attr($data_tagline_clr) ?>;">
-                        <?php esc_html_e('Please come back at this time. Thank you for your patience', '_wswebinar') ?>
+                        <?php esc_html_e('Please come back at this time. Thank you for your patience', 'wp-webinarsystem') ?>
                     </h3>
 
                 <?php } ?>
@@ -117,7 +117,7 @@ $body_script = get_post_meta($post->ID, '_wswebinar_cntdwnp_script_body', true);
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center col-md-offset-2 flipclock-div">
                 <div class="clock" style="margin:2em;"></div>
-                <h3 class="refreshNotice" style="display: none; color:<?php echo empty($data_desc_clr)? '#AB27CC' : esc_attr($data_desc_clr); ?>;"><?php esc_html_e('Just a second, we are starting the broadcast. This page will refresh automatically...', '_wswebinar') ?></h3>
+                <h3 class="refreshNotice" style="display: none; color:<?php echo empty($data_desc_clr)? '#AB27CC' : esc_attr($data_desc_clr); ?>;"><?php esc_html_e('Just a second, we are starting the broadcast. This page will refresh automatically...', 'wp-webinarsystem') ?></h3>
                 <div class="message"></div>
             </div>
             <div class="col-lg-2 col-md-1"></div>
@@ -127,8 +127,8 @@ $body_script = get_post_meta($post->ID, '_wswebinar_cntdwnp_script_body', true);
 
         <script type="text/javascript">
             var theWebinarId = <?php echo intval($post->ID); ?>;
-            var questionFormerror = '<?php esc_html_e('Something is wrong with your Add Questions form. Please re-check all fields are filled correctly', '_wswebinar') ?>';
-            var questionWait = '<?php esc_html_e('Please wait..', '_wswebinar') ?>';
+            var questionFormerror = '<?php esc_html_e('Something is wrong with your Add Questions form. Please re-check all fields are filled correctly', 'wp-webinarsystem') ?>';
+            var questionWait = '<?php esc_html_e('Please wait..', 'wp-webinarsystem') ?>';
             var theWebinarstatus="<?php echo esc_attr($status); ?>";
             var fetchValues = false;
             var transferValues = false;
