@@ -3,7 +3,7 @@
   Plugin Name: WebinarPress
   Plugin URI: https://webinarpress.com
   Description: Host live and automated webinars within your WordPress website, and customize everything.
-  Version: 1.33.25
+  Version: 1.33.26
   Author: WebinarPress
   Author URI: https://webinarpress.com
   License: GPLv2 or later
@@ -13,7 +13,7 @@
 
 include 'includes/core-import.php';
 
-$plug_version = '1.33.25';
+$plug_version = '1.33.26';
 
 define('WPWS_PLUGIN_VERSION', $plug_version);
 define('WPWS_PLUGIN_FOLDER', __DIR__);
