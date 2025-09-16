@@ -1,10 +1,10 @@
-=== Wordpress Webinar Plugin - WebinarPress ===
+=== WebinarPress – Webinar System for WordPress ===
 Contributors: WPWebinarSystem
 Donate link: https://webinarpress.com
 Tags: webinar, stream, seminar, zoom, live
 Requires at least: 4.4.2
 Tested up to: 6.7
-Stable tag: 1.33.27
+Stable tag: 1.33.28
 Requires PHP: 7.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -287,6 +287,9 @@ Didn’t find the answer you were looking for? [Check out our FAQ page](http://w
 7. Attendee list
 
 == Changelog ==
+= 1.33.28 - 2025-09-16
+- Update Readme file
+
 = 1.33.27 - 2025-01-09
 - Zoom SDK update
 
